@@ -1,0 +1,32 @@
+services:
+  back:
+    container_name: "back"
+    build: 
+      context: "./src-back"
+      dockerfile: "../dockerfiles/Dockerfile.back.dev"
+    ports:
+      - "3000:3000"
+      - 9229:9229
+    tty: true
+    volumes:
+      - ./src-back:/app
+      # - /app/node_modules
+  
+  db:
+    image: postgres:15.3-bullseye
+    container_name: Postgres
+    restart: always
+    environment:
+      # POSTGRES_USER: urlshortener
+      POSTGRES_PASSWORD: shorturl
+    ports:
+      - 5432:5432
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    container_name: Adminer
+    restart: always
+    ports:
+      - 8080:8080
