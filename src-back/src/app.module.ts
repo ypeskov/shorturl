@@ -12,7 +12,10 @@ import { AppController } from './app.controller';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    TypeOrmModule.forRoot(dataSourceOptions),
+    TypeOrmModule.forRoot({
+      ...dataSourceOptions,
+      // autoLoadEntities: true
+    }),
     UrlsModule,
   ],
   controllers: [AppController],

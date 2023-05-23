@@ -5,7 +5,7 @@ import { BaseEntity } from "./base.entity"
 export class Url extends BaseEntity {
     @Column({unique: true})
     short_url_hash: string
-    
+
     @Column()
     full_url: string
 }

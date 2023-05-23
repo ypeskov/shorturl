@@ -13,8 +13,11 @@ export class UrlsController {
 
   @Post('/')
   async createNewUrl(@Body() createUrl: CreateUrlDto): Promise<UrlCreatedResponse> {
-    const newUrl = await this.urlsService.createUrl(createUrl.full_url);
-
-    return new UrlCreatedResponse(newUrl.full_url, newUrl.short_url_hash);
+    try {
+      const newUrl = await this.urlsService.createUrl(createUrl.full_url);
+      return new UrlCreatedResponse(newUrl.full_url, newUrl.short_url_hash);
+    } catch(err: any) {
+      console.log(err);
+    } 
   }
 } 
