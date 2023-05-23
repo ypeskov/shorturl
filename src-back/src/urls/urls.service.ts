@@ -13,7 +13,7 @@ export class UrlsService {
   async createUrl(newFullUrl: string) {
     const numberOfAttempts = 100;
     const hashLength = 5;
-    
+
     let newUrl = new Url();
     newUrl.full_url = newFullUrl;
     
@@ -33,6 +33,16 @@ export class UrlsService {
     }
 
     throw new InternalServerErrorException();
+  }
+
+  async findUrlByHash(hash: string): Promise<Url> {
+    try {
+      const url = await Url.findOneByOrFail({ short_url_hash: hash });
+      return url;
+    } catch(err) {
+      throw err;
+    }
+    
   }
 
   findAll() {

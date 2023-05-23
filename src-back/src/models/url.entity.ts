@@ -1,8 +1,8 @@
-import { Entity, Column } from "typeorm"
-import { BaseEntity } from "./base.entity"
+import { Entity, Column, BaseEntity, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Base } from "./base.entity"
 
 @Entity()
-export class Url extends BaseEntity {
+export class Url extends Base {
     @Column({unique: true})
     short_url_hash: string
 

@@ -12,3 +12,7 @@ export class UrlCreatedResponse {
         this.short_url_hash = hash;
     }
 }
+
+export class UrlHashRequest {
+    hash: string;
+}

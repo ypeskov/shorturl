@@ -7,6 +7,8 @@ import { AppService } from './app.service';
 import { UrlsModule } from './urls/urls.module';
 import { dataSourceOptions } from './data-source';
 import { AppController } from './app.controller';
+import { UrlsService } from './urls/urls.service';
+import { Url } from './models/url.entity';
 
 
 @Module({
@@ -16,10 +18,14 @@ import { AppController } from './app.controller';
       ...dataSourceOptions,
       // autoLoadEntities: true
     }),
+    TypeOrmModule.forFeature([Url]),
     UrlsModule,
   ],
   controllers: [AppController],
-  providers: [AppService], 
+  providers: [
+    AppService,
+    UrlsService,
+  ], 
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
