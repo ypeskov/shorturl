@@ -1,5 +1,8 @@
 import {useState} from 'react';
 import './App.css';
+import './components/ShortUrl';
+import ShortUrl from './components/ShortUrl';
+
 
 function App() {
   const [fullUrl, setFullUrl] = useState('');
@@ -17,7 +20,7 @@ function App() {
       'body': JSON.stringify({'full_url': fullUrl})
     });
     const url = await response.json();
-    
+
     setShortUrl(url.short_url);
     setShowResult(true);
   }
@@ -27,9 +30,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div id="App">
       <header className="App-header">
-        <div>Url Shortner App</div>
+        <div id="header-container">Url Shortner App</div>
       </header>
 
       <div>
@@ -42,10 +45,7 @@ function App() {
         </form>
       </div>
 
-      {showResult && <div >
-        The short URL is: <a href={shortUrl}>{shortUrl}</a>
-      </div>
-      }
+      {showResult && <ShortUrl shortUrl={shortUrl} /> }
     </div>
   );
 }
