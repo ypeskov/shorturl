@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   const [fullUrl, setFullUrl] = useState('');
+  const [showResult, setShowResult] = useState(false);
+  const [shortUrl, setShortUrl] = useState('');
 
   async function processSubmit(event) {
     event.preventDefault();
@@ -14,7 +16,10 @@ function App() {
       },
       'body': JSON.stringify({'full_url': fullUrl})
     });
-    console.log(response);
+    const url = await response.json();
+    
+    setShortUrl(url.short_url);
+    setShowResult(true);
   }
 
   function processUrlChange(event) {
@@ -36,6 +41,11 @@ function App() {
           <button type="submit">Get short link</button>
         </form>
       </div>
+
+      {showResult && <div >
+        The short URL is: <a href={shortUrl}>{shortUrl}</a>
+      </div>
+      }
     </div>
   );
 }
