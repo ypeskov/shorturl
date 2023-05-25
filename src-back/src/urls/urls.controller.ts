@@ -20,7 +20,6 @@ export class UrlsController {
 
   @Post('/')
   async createNewUrl(@Body() createUrl: CreateUrlDto, @Req() req: Request): Promise<UrlCreatedResponse> {
-    console.log(req.protocol, req.get('Host'));
     try {
       const newUrl: Url = await this.urlsService.createUrl(createUrl.full_url);
       let response = new UrlCreatedResponse(newUrl.full_url, newUrl.short_url_hash);
