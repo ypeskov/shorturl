@@ -16,6 +16,7 @@ export class UrlsService {
 
     let newUrl = new Url();
     newUrl.full_url = newFullUrl;
+    console.log(newUrl);
     
     for(let i=0; i<numberOfAttempts; i++) {
       newUrl.short_url_hash = makeId(hashLength);

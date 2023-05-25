@@ -5,7 +5,7 @@ services:
       context: "./src-back"
       dockerfile: "../dockerfiles/Dockerfile.back.dev"
     ports:
-      - "3000:3000"
+      - "9000:9000"
       - 9229:9229
     tty: true
     volumes:
