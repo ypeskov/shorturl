@@ -15,3 +15,8 @@ body {
   font-size: 2em;
   text-decoration: underline;
 }
+
+#full_url {
+  margin: 1em;
+  width: 60%;
+}
