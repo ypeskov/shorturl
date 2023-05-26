@@ -11,10 +11,9 @@ function App() {
 
   async function processSubmit(event) {
     event.preventDefault();
-    const apiUrl = process.env.REACT_APP_API_URL;
-    console.log(apiUrl);
+    const apiDomain = `${process.env.REACT_APP_API_URL}/urls`;
 
-    let response = await fetch(apiUrl, {
+    let response = await fetch(apiDomain, {
       'method': 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -25,6 +24,7 @@ function App() {
 
     setShortUrl(url.short_url);
     setShowResult(true);
+    setFullUrl('');
   }
 
   function processUrlChange(event) {
