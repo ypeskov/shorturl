@@ -12,3 +12,4 @@ tmp/
 temp/
 
 db-data/
+pgdata/
