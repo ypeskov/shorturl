@@ -10,7 +10,7 @@ export class AppController {
   ) {}
 
   @Get(':hash')
-  @Redirect('https://nestjs.com', 301)
+  @Redirect('', 301)
   async redirectToFullUrl(@Param() urlHash: UrlHashRequest) {
     try {
       const url = await this.urlsService.findUrlByHash(urlHash.hash);

@@ -11,8 +11,10 @@ function App() {
 
   async function processSubmit(event) {
     event.preventDefault();
+    const apiUrl = process.env.REACT_APP_API_URL;
+    console.log(apiUrl);
 
-    let response = await fetch('http://localhost:9000/urls', {
+    let response = await fetch(apiUrl, {
       'method': 'POST',
       headers: {
         "Content-Type": "application/json"
