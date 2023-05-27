@@ -41,6 +41,6 @@ def redirect_to_full_url(db: Annotated[Session, Depends(get_db)],
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No URL found")
     return RedirectResponse(url=db_url.full_url, status_code=status.HTTP_301_MOVED_PERMANENTLY)
 
-
+pprint(app.routes)
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
