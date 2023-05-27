@@ -9,4 +9,4 @@ class Settings(BaseSettings):
 
     class Config:
         # `.env.prod` takes priority over `.env`
-        env_file = '.env', '.env.local', '.env.prod' 
+        env_file = '.env', '.env.local', '.env.prod'
