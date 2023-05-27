@@ -9,20 +9,19 @@ services:
     depends_on:
       - db
 
-  # front:
-  #   container_name: "front"
-  #   build: 
-  #     context: "./src-front"
-  #     dockerfile: "../dockerfiles/Dockerfile.front.dev"
-  #   ports:
-  #     - 3000:3000
-  #     # - 9229:9229
-  #   tty: true
-  #   volumes:
-  #     - ./src-front:/app
-  #     # - /app/node_modules
-  #   depends_on:
-  #     - back
+  front:
+    container_name: "front"
+    build: 
+      context: "./src-front"
+      dockerfile: "../dockerfiles/Dockerfile.front.dev"
+    ports:
+      - 3000:3000
+    tty: true
+    volumes:
+      - ./src-front:/app
+      # - /app/node_modules
+    depends_on:
+      - back
   
   db:
     image: postgres:15.3-bullseye
@@ -36,9 +35,9 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
 
-  # adminer:
-  #   image: adminer
-  #   container_name: Adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
+  adminer:
+    image: adminer
+    container_name: Adminer
+    restart: always
+    ports:
+      - 8080:8080
