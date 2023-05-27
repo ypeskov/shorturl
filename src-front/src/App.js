@@ -13,18 +13,21 @@ function App() {
     event.preventDefault();
     const apiDomain = `${process.env.REACT_APP_API_URL}/urls`;
 
-    let response = await fetch(apiDomain, {
-      'method': 'POST',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      'body': JSON.stringify({'full_url': fullUrl})
-    });
-    const url = await response.json();
-
-    setShortUrl(url.short_url);
-    setShowResult(true);
-    setFullUrl('');
+    try {
+      let response = await fetch(apiDomain, {
+        'method': 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        'body': JSON.stringify({'full_url': fullUrl})
+      });
+      const url = await response.json();
+      setShortUrl(url.short_url);
+      setShowResult(true);
+      setFullUrl('');
+    } catch(err) {
+      console.log(err);
+    }
   }
 
   function processUrlChange(event) {
@@ -34,12 +37,12 @@ function App() {
   return (
     <div id="App">
       <header className="App-header">
-        <div id="header-container">Url Shortner App</div>
+        <div id="header-container">Url Shortener App</div>
       </header>
 
-      <div>
-        <form onSubmit={processSubmit}>
-          <label>
+      <div id="form-container">
+        <form  id="form-itself" onSubmit={processSubmit}>
+          <label id="label-input">
             Enter a full url:
             <input id="full_url" value={fullUrl} onChange={processUrlChange} />
           </label>

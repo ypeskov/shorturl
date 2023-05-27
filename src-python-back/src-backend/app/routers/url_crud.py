@@ -21,7 +21,6 @@ def generate_short_id(num_of_chars: int):
 def create_url(db: Session, url: str) -> Union[Url, None]:
     random_str = generate_short_id(5)
     db_url = Url(full_url=url,
-                 short_url_prefix='',
                  short_url_path=random_str)
     db.add(db_url)
     try:
