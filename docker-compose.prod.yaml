@@ -17,8 +17,8 @@ services:
     ports:
       - 3000:3000
     tty: true
-    volumes:
-      - ./src-front:/app
+    # volumes:
+      # - ./src-front:/app
       # - /app/node_modules
     depends_on:
       - back
