@@ -1,2 +1,2 @@
-build:
-	docker buildx build --platform=linux/amd64,linux/arm64 --file=../dockerfiles/Dockerfile.fastapi.prod --tag=fastapi-url-back .
+start-produciton:
+	sudo docker-compose -f docker-compose.prod.yaml up --build
