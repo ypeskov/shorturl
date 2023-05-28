@@ -3,7 +3,6 @@ import './App.css';
 import './components/ShortUrl';
 import ShortUrl from './components/ShortUrl';
 
-
 function App() {
   const [fullUrl, setFullUrl] = useState('');
   const [showResult, setShowResult] = useState(false);
